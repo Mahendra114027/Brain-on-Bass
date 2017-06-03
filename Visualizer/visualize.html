@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta content='IE=8' http-equiv='X-UA-Compatible'>
+        <title>Brain on Bass</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css' />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/bufferloader.js"></script>
+        <script src="js/id3-minimized.js"></script>
+        <script src="js/brainonbass.js"></script>
+    </head>
+    <body>		   
+        <input type="file" id="input" onchange="handleFiles(this.files)"/> 
+        <div id="title">Title</div>
+        <div id="artist">Artist</div>
+        <div id="album">Album</div>
+        <canvas id="freq" width="1024" height="525"></canvas>
+    </body>
+</html>
