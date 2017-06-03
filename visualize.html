@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Brain on Bass</title>
+		<link rel="stylesheet" href="">
+	</head>
+	<body>
+	<audio id="myAudio" src="/new.mp3"></audio>
+	
+	</body>
+	<script>
+// 		var audio = new Audio();
+// audio.src = 'new.mp3';
+// audio.controls = true;
+// audio.autoplay = true;
+// document.body.appendChild(audio);
+
+// Wait for window.onload to fire. See crbug.com/112368
+window.addEventListener('load', function(e) {
+  var ctx = new AudioContext();
+  var audio = document.getElementById('myAudio');
+  audio.crossOrigin = "anonymous";
+
+  var audioSrc = ctx.createMediaElementSource(audio);
+  var analyser = ctx.createAnalyser();
+  // we have to connect the MediaElementSource with the analyser 
+  audioSrc.connect(analyser);
+  analyser.fftSize = 1024;
+  // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
+ 
+  // frequencyBinCount tells you how many values you'll receive from the analyser
+  var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+ console.log(frequencyData);
+  // we're ready to receive some data!
+  // loop
+  function renderFrame() {
+     requestAnimationFrame(renderFrame);
+     // update data in frequencyData
+     analyser.getByteFrequencyData(frequencyData);
+     // render frame based on values in frequencyData
+     // console.log(frequencyData)
+  }
+  audio.play();
+  renderFrame();
+});
+	</script>
+</html>
