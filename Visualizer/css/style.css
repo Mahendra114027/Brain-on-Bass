@@ -28,6 +28,11 @@ body {
     background:#000;
     overflow: hidden;
 }
+#back{
+    background:url('../cbk.jpg');
+    background-size: cover;
+    height: 100%;
+}
 #freq.animateHue, body.animateHue {
     animation-name: hue;
     animation-duration: 500s;

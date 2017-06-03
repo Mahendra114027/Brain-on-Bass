@@ -5,12 +5,20 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<title>Brain on Bass</title>
       <script src="canvas.js"></script>
-    	<link rel="stylesheet" href="">
+    	<script src="Visualizer/js/id3-minimized.js"></script>
+      <script src="Visualizer/js/brainonbass.js"></script>
 	</head>
-	<body style="background-color:black">
-
-    <canvas id="canvas" style="background:  url('cbk.jpg');background-size:cover;">
-      Your Browser does not support the canvas tag
-    </canvas>
+	<body style="background:url('cbk.jpg');background-size: cover">
+    <div id="red" style="border-radius: 50%;background-color: rgba(255,0,0,0.6);width: 250px;height: 250px"></div>
 	</body>
+  <script>
+  document.getElementById('red').onclick = function()
+  {
+    ID3.loadTags("new.mp3", function() {
+    alert("Inside");
+    var tags = ID3.getAllTags("new.mp3");
+    alert(tags.artist + " - " + tags.title + ", " + tags.album);
+    });
+  }
+  </script>
 </html>
