@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta content='IE=8' http-equiv='X-UA-Compatible'>
+        <title>Brain on Bass</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css' />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/bufferloader.js"></script>
+        <script src="js/id3-minimized.js"></script>
+        <script src="js/brainonbass.js"></script>
+    </head>
+    <body>		
+        <div class="nodisp" id="red" onclick="meta();">
+        <div class="nodisp" id="name" style="display:block;font-size: 40px"></div>
+        </div>  
+        <div class="nodisp" id="back"></div>
+         
+        <input type="file" id="input" onchange="handleFiles(this.files);" />
+        <div class="disp" id="title">Title</div>
+        <div class="disp" id="artist">Artist</div>
+        <div class="disp" id="album">Album</div>
+        <canvas class="disp" id="freq" width="1024" height="525"></canvas>
+    </body>
+    <script type="text/javascript">
+        ID3.loadTags("new.mp3", function() {
+        var tags = ID3.getAllTags("new.mp3");
+        document.getElementById("name").innerHTML=tags.title;
+        });
+        function meta() {
+            // var input = document.getElementById("input");
+            // input.style.display="none";
+            //handleFiles(input.files);
+            var disp = document.getElementsByClassName('disp');
+            var nodisp = document.getElementsByClassName('nodisp');
+            for(i=0;i<disp.length;i++)
+                disp[i].style.display="block";
+            for(i=0;i<nodisp.length;i++)
+                nodisp[i].style.display="none";
+        }
+    </script>
+</html>

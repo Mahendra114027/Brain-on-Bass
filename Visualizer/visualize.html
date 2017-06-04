@@ -12,27 +12,33 @@
         <script src="js/brainonbass.js"></script>
     </head>
     <body>		
-        <div class="nodisp" id="red" onclick="meta();" style="word-wrap: break-word;border-radius: 50%;background-color: rgba(255,0,0,0.6);width: 250px;height: 250px;position: absolute; margin: 0;">
+        <div class="nodisp" id="red" onclick="meta();">
         <div class="nodisp" id="name" style="display:block;font-size: 40px"></div>
         </div>  
         <div class="nodisp" id="back"></div>
          
-        <!-- <input type="file" id="input" onchange="handleFiles(this.files)"/>  -->
+        <input type="file" id="input" onchange="console.log(this.files);" />
         <div class="disp" id="title">Title</div>
         <div class="disp" id="artist">Artist</div>
         <div class="disp" id="album">Album</div>
         <canvas class="disp" id="freq" width="1024" height="525"></canvas>
     </body>
     <script type="text/javascript">
-        document.getElementsByClassName('disp')[0].style.display="none";
+        //document.getElementsByClassName('disp')[0].style.display="none";
         ID3.loadTags("new.mp3", function() {
         var tags = ID3.getAllTags("new.mp3");
         document.getElementById("name").innerHTML=tags.title;
         });
         function meta() {
-            handleFiles("new.mp3");
-            document.getElementsByClassName('disp')[0].style.display="block";
-            document.getElementsByClassName('nodisp')[0].style.display="none";
+            //var input = document.getElementById("input");
+            //input.style.display="none";
+            //handleFiles(input.files);
+            var disp = document.getElementsByClassName('disp');
+            var nodisp = document.getElementsByClassName('nodisp');
+            for(i=0;i<disp.length;i++)
+                disp[i].style.display="block";
+            for(i=0;i<nodisp.length;i++)
+                nodisp[i].style.display="none";
         }
     </script>
 </html>
