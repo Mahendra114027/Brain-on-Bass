@@ -2,14 +2,33 @@ import unirest
 import json 
 import sys
 # from subprocess import call
+import pyaudio
+import wave
+import speech_recognition as sr
+#from os import path
+#import re
 
-# to use the above libraries just install unirest
-#		"pip install unirest"
-# 		only for python2.7
-#
 
-# edit the text below to find its positivity and negitivity.
-text = sys.argv[1]
+r = sr.Recognizer()
+m = sr.Microphone()
+
+try:
+    #set threhold level
+    with m as source: r.adjust_for_ambient_noise(source)
+
+    # obtain audio from the microphone
+    with sr.Microphone() as source:
+        print("Say something!")
+        audio = r.listen(source)
+
+except:
+    pass
+
+x = r.recognize_google(audio)
+print(x)
+
+#text = sys.argv[1]
+text = x
 # angry -0.99774768  
 # sad -0.97837309
 # happy 0.941875182
