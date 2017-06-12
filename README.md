@@ -14,3 +14,16 @@ then, just download **PyAudio-0.2.11-cp27-cp27m-win_amd64.whl** wheel file, and 
 3. install ```SpeechRecognition``` - for audio to text conversion API call.
     > pip install SpeechRecognition
         
+
+##### for linux
+1. install ```unirest``` - for making HTTP requests
+    > pip install unirest
+2. install port audio dependency and other dependency
+    > apt-get install portaudio19-dev python-all-dev
+3. install ```pyaudio``` - for recoding voice input
+    > apt-get install python-pyaudio
+- **OPTIONAL** - The program require pyaudio@0.2.9, if it gives the following error, upgrade using the following command.
+    > pip install pyaudio==0.2.9 --upgrade
+4. install ```SpeechRecognition``` - for audio to text conversion API call.
+    > pip install SpeechRecognition
+        
